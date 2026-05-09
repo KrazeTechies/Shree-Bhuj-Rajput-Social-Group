@@ -23,10 +23,10 @@ function AppLayout() {
         <Container maxWidth="lg">
           <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1.2} justifyContent="space-between" alignItems="center">
             <Typography sx={{ fontSize: { xs: '0.78rem', md: '0.9rem' }, fontWeight: 500 }}>
-              Phone: +91 98765 43210
+              Phone: +91 9427250955
             </Typography>
             <Typography sx={{ fontSize: { xs: '0.78rem', md: '0.9rem' }, fontWeight: 500 }}>
-              Email: sbrsggroup@gmail.com
+              Email: rajput.social.group@gmail.com
             </Typography>
           </Stack>
         </Container>
@@ -54,7 +54,7 @@ function AppLayout() {
                 variant="h5"
                 sx={{
                   fontWeight: 800,
-                  color: '#002c3e',
+                  color: 'darkslateblue',
                   lineHeight: 1.1,
                   display: 'flex',
                   alignItems: 'center',
