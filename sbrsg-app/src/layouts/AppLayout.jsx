@@ -1,0 +1,101 @@
+import {
+  Box,
+  Container,
+  Link,
+  Stack,
+  Typography,
+} from '@mui/material'
+import { Link as RouterLink, Outlet } from 'react-router-dom'
+import Logo from '../assets/Logo.png'
+
+const navItems = [
+  { label: 'Home', to: '/#home' },
+  { label: 'Pages', to: '/#about' },
+  { label: 'Products', to: '/#products' },
+  { label: 'Blog', to: '/#blog' },
+  { label: 'Contact', to: '/#contact' },
+]
+
+function AppLayout() {
+  return (
+    <Box sx={{ minHeight: '100dvh', bgcolor: '#ffffff', scrollBehavior: 'smooth' }}>
+      <Box sx={{ bgcolor: '#f7444e', color: '#fff', py: 1 }}>
+        <Container maxWidth="lg">
+          <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1.2} justifyContent="space-between" alignItems="center">
+            <Typography sx={{ fontSize: { xs: '0.78rem', md: '0.9rem' }, fontWeight: 500 }}>
+              Phone: +91 98765 43210
+            </Typography>
+            <Typography sx={{ fontSize: { xs: '0.78rem', md: '0.9rem' }, fontWeight: 500 }}>
+              Email: sbrsggroup@gmail.com
+            </Typography>
+          </Stack>
+        </Container>
+      </Box>
+
+      <Box sx={{ borderBottom: '1px solid', borderColor: 'divider', bgcolor: '#fff' }}>
+        <Container maxWidth="lg">
+          <Stack
+            direction={{ xs: 'column', md: 'row' }}
+            alignItems={{ xs: 'center', md: 'center' }}
+            justifyContent="space-between"
+            spacing={{ xs: 1.2, md: 2 }}
+            sx={{ py: { xs: 1.1, md: 1.5 } }}
+          >
+            <Stack direction="row" spacing={1.5} alignItems="center">
+              <Box
+                component="img"
+                src={Logo}
+                alt="SBRSG Logo"
+                sx={{ width: { xs: 80, sm: 96 }, height: { xs: 80, sm: 96 }, objectFit: 'contain' }}
+              />
+              <Typography
+                variant="h5"
+                sx={{
+                  fontWeight: 800,
+                  color: '#002c3e',
+                  lineHeight: 1.1,
+                  fontSize: { xs: '1rem', sm: '1.35rem' },
+                  textAlign: { xs: 'center', md: 'left' },
+                }}
+              >
+                Shree Bhuj Rajput Social Group
+              </Typography>
+            </Stack>
+
+            <Stack
+              direction="row"
+              spacing={{ xs: 1.2, md: 2.2 }}
+              alignItems="center"
+              justifyContent={{ xs: 'center', md: 'flex-end' }}
+              flexWrap="wrap"
+              sx={{ rowGap: 1, width: { xs: '100%', md: 'auto' } }}
+            >
+              {navItems.map((item) => (
+                <Link
+                  key={item.label}
+                  component={RouterLink}
+                  to={item.to}
+                  underline="none"
+                  sx={{
+                    color: '#002c3e',
+                    fontWeight: item.label === 'Home' ? 700 : 600,
+                    fontSize: '0.96rem',
+                    '&:hover': { color: '#f7444e' },
+                  }}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </Stack>
+          </Stack>
+        </Container>
+      </Box>
+
+      <Container maxWidth="lg" sx={{ py: { xs: 5, md: 10 } }}>
+        <Outlet />
+      </Container>
+    </Box>
+  )
+}
+
+export default AppLayout
