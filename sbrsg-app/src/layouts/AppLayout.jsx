@@ -36,17 +36,19 @@ function AppLayout() {
         <Container maxWidth="lg">
           <Stack
             direction={{ xs: 'column', md: 'row' }}
-            alignItems={{ xs: 'center', md: 'center' }}
-            justifyContent="space-between"
             spacing={{ xs: 1.2, md: 2 }}
-            sx={{ py: { xs: 1.1, md: 1.5 } }}
+            sx={{
+              py: { xs: 1.1, md: 1.5 },
+              alignItems: { xs: 'center', md: 'center' },
+              justifyContent: { xs: 'center', md: 'space-between' },
+            }}
           >
             <Stack direction="row" spacing={1.5} alignItems="center">
               <Box
                 component="img"
                 src={Logo}
                 alt="SBRSG Logo"
-                sx={{ width: { xs: 80, sm: 96 }, height: { xs: 80, sm: 96 }, objectFit: 'contain' }}
+                sx={{ width: 125, height: 125, objectFit: 'contain' }}
               />
               <Typography
                 variant="h5"
@@ -54,8 +56,11 @@ function AppLayout() {
                   fontWeight: 800,
                   color: '#002c3e',
                   lineHeight: 1.1,
-                  fontSize: { xs: '1rem', sm: '1.35rem' },
-                  textAlign: { xs: 'center', md: 'left' },
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '26px',
+                  textAlign: 'center',
                 }}
               >
                 Shree Bhuj Rajput Social Group
