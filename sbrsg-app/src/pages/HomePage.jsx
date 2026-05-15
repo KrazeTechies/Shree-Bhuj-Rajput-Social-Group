@@ -3,6 +3,8 @@ import StarRounded from '@mui/icons-material/StarRounded'
 import SupportAgentRounded from '@mui/icons-material/SupportAgentRounded'
 import { Avatar, Box, Button, Container, Grid, Stack, TextField, Typography } from '@mui/material'
 import HeroImage from '../assets/hero.png'
+import { useEffect, useState } from 'react'
+import { Link as RouterLink, Outlet } from 'react-router-dom'
 
 const highlights = [
   { title: 'Fast Delivery', desc: 'Important updates and event details reach members quickly.', icon: <LocalShippingRounded /> },
@@ -19,7 +21,43 @@ const products = [
   { name: 'Women Empowerment Drive', price: '75', image: HeroImage },
 ]
 
+const sliderImages = [
+  {
+    src: '/slider/slide-1.jpeg',
+    alt: 'Community celebration event',
+  },
+  {
+    src: '/slider/slide-2.jpeg',
+    alt: 'Traditional cultural gathering',
+  },
+  {
+    src: '/slider/slide-3.jpeg',
+    alt: 'People attending social group program',
+  },
+  {
+    src: '/slider/slide-4.jpeg',
+    alt: 'People attending social group program',
+  },
+]
+
 function HomePage() {
+  const [activeSlide, setActiveSlide] = useState(0)
+  const handlePrevSlide = () => {
+    setActiveSlide((prev) => (prev - 1 + sliderImages.length) % sliderImages.length)
+  }
+
+  const handleNextSlide = () => {
+    setActiveSlide((prev) => (prev + 1) % sliderImages.length)
+  }
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      handleNextSlide()
+    }, 3500)
+
+    return () => clearInterval(timer)
+  }, [])
+
   return (
     <Stack spacing={{ xs: 7, md: 9 }}>
       <Box
@@ -31,6 +69,136 @@ function HomePage() {
           scrollMarginTop: { xs: 90, md: 120 },
         }}
       >
+        <Box sx={{ bgcolor: '#0b172a' }}>
+        <Container maxWidth="lg" sx={{ py: { xs: 2, md: 3 } }}>
+          <Box
+            sx={{
+              position: 'relative',
+              height: { xs: 210, sm: 320, md: 430 },
+              borderRadius: 2.5,
+              overflow: 'hidden',
+              boxShadow: '0 10px 30px rgba(0,0,0,0.25)',
+            }}
+          >
+            {sliderImages.map((image, index) => (
+              <Box
+                key={`${image.src}-${index}`}
+                component={RouterLink}
+                to="/gallery"
+                aria-label="Open Gallery page"
+                sx={{
+                  position: 'absolute',
+                  inset: 0,
+                  transition: 'opacity 0.6s ease',
+                  opacity: index === activeSlide ? 1 : 0,
+                  zIndex: 1,
+                  textDecoration: 'none',
+                }}
+              >
+                <Box
+                  component="img"
+                  src={image.src}
+                  alt={image.alt}
+                  sx={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    display: 'block',
+                  }}
+                />
+              </Box>
+            ))}
+            <Box
+              sx={{
+                position: 'absolute',
+                inset: 0,
+                background: 'linear-gradient(to top, rgba(0,0,0,0.45), rgba(0,0,0,0.08))',
+                pointerEvents: 'none',
+                zIndex: 2,
+              }}
+            />
+
+            <Box
+              role="button"
+              aria-label="Previous slide"
+              onClick={handlePrevSlide}
+              sx={{
+                position: 'absolute',
+                left: { xs: 8, md: 14 },
+                top: '50%',
+                transform: 'translateY(-50%)',
+                width: { xs: 34, md: 42 },
+                height: { xs: 34, md: 42 },
+                borderRadius: '50%',
+                bgcolor: 'rgba(255,255,255,0.85)',
+                color: '#002c3e',
+                display: 'grid',
+                placeItems: 'center',
+                fontSize: { xs: '1.15rem', md: '1.45rem' },
+                fontWeight: 700,
+                cursor: 'pointer',
+                userSelect: 'none',
+                transition: 'all 0.25s ease',
+                zIndex: 3,
+                '&:hover': { bgcolor: '#fff', transform: 'translateY(-50%) scale(1.06)' },
+              }}
+            >
+              ‹
+            </Box>
+
+            <Box
+              role="button"
+              aria-label="Next slide"
+              onClick={handleNextSlide}
+              sx={{
+                position: 'absolute',
+                right: { xs: 8, md: 14 },
+                top: '50%',
+                transform: 'translateY(-50%)',
+                width: { xs: 34, md: 42 },
+                height: { xs: 34, md: 42 },
+                borderRadius: '50%',
+                bgcolor: 'rgba(255,255,255,0.85)',
+                color: '#002c3e',
+                display: 'grid',
+                placeItems: 'center',
+                fontSize: { xs: '1.15rem', md: '1.45rem' },
+                fontWeight: 700,
+                cursor: 'pointer',
+                userSelect: 'none',
+                transition: 'all 0.25s ease',
+                zIndex: 3,
+                '&:hover': { bgcolor: '#fff', transform: 'translateY(-50%) scale(1.06)' },
+              }}
+            >
+              ›
+            </Box>
+
+            <Stack
+              direction="row"
+              spacing={1}
+              sx={{ position: 'absolute', bottom: 14, left: '50%', transform: 'translateX(-50%)', zIndex: 3 }}
+            >
+              {sliderImages.map((_, index) => (
+                <Box
+                  key={`dot-${index}`}
+                  role="button"
+                  aria-label={`Go to slide ${index + 1}`}
+                  onClick={() => setActiveSlide(index)}
+                  sx={{
+                    width: index === activeSlide ? 24 : 10,
+                    height: 10,
+                    borderRadius: 999,
+                    cursor: 'pointer',
+                    transition: 'all 0.3s ease',
+                    bgcolor: index === activeSlide ? '#f7444e' : 'rgba(255,255,255,0.8)',
+                  }}
+                />
+              ))}
+            </Stack>
+          </Box>
+        </Container>
+      </Box>
         <Grid container spacing={0}>
           <Grid size={{ xs: 12, md: 7 }}>
             <Box sx={{ p: { xs: 3, md: 7 }, pt: { xs: 4, md: 9 } }}>
@@ -207,44 +375,7 @@ function HomePage() {
         </Stack>
       </Container>
 
-      <Box id="contact" sx={{ bgcolor: '#212529', color: '#d4dde1', borderRadius: 1.5, p: { xs: 3, md: 5 }, scrollMarginTop: { xs: 90, md: 120 } }}>
-        <Grid container spacing={3}>
-          <Grid size={{ xs: 12, md: 4 }}>
-            <Typography variant="h6" sx={{ fontWeight: 800, mb: 1.2, color: '#fff' }}>
-              ADDRESS
-            </Typography>
-            <Typography>Bhuj, Kutch, Gujarat</Typography>
-          </Grid>
-          <Grid size={{ xs: 12, md: 4 }}>
-            <Typography variant="h6" sx={{ fontWeight: 800, mb: 1.2, color: '#fff' }}>
-              MENU
-            </Typography>
-            <Typography>Home</Typography>
-            <Typography>About</Typography>
-            <Typography>Services</Typography>
-            <Typography>Contact</Typography>
-          </Grid>
-          <Grid size={{ xs: 12, md: 4 }}>
-            <Typography variant="h6" sx={{ fontWeight: 800, mb: 1.2, color: '#fff' }}>
-              NEWSLETTER
-            </Typography>
-            <Typography sx={{ mb: 1.1 }}>Subscribe by our newsletter and get updates.</Typography>
-            <Button
-              variant="contained"
-              size="small"
-              sx={{
-                bgcolor: '#f7444e',
-                '&:hover': { bgcolor: '#d83741' },
-              }}
-            >
-              Subscribe
-            </Button>
-          </Grid>
-        </Grid>
-        <Typography sx={{ mt: 3.5, pt: 2, borderTop: '1px solid #343b40', textAlign: 'center', fontSize: '0.9rem' }}>
-          © 2026 All Rights Reserved By SBRSG
-        </Typography>
-      </Box>
+      
     </Stack>
   )
 }

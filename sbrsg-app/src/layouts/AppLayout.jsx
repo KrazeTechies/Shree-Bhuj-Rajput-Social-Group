@@ -4,22 +4,24 @@ import {
   Link,
   Stack,
   Typography,
+  Grid,
+  Button
 } from '@mui/material'
 import { Link as RouterLink, Outlet } from 'react-router-dom'
 import Logo from '../assets/Logo.png'
 
 const navItems = [
   { label: 'Home', to: '/#home' },
-  { label: 'Pages', to: '/#about' },
-  { label: 'Products', to: '/#products' },
-  { label: 'Blog', to: '/#blog' },
-  { label: 'Contact', to: '/#contact' },
+  { label: 'Gallery', to: '/gallery' },
+  // { label: 'About', to: '/#products' },
+  // { label: 'Suggestion Box', to: '/#blog' },
+  { label: 'Contact', to: '/contact' },
 ]
 
 function AppLayout() {
   return (
     <Box sx={{ minHeight: '100dvh', bgcolor: '#ffffff', scrollBehavior: 'smooth' }}>
-      <Box sx={{ bgcolor: '#f7444e', color: '#fff', py: 1 }}>
+      {/* <Box sx={{ bgcolor: '#f7444e', color: '#fff', py: 1 }}>
         <Container maxWidth="lg">
           <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1.2} justifyContent="space-between" alignItems="center">
             <Typography sx={{ fontSize: { xs: '0.78rem', md: '0.9rem' }, fontWeight: 500 }}>
@@ -30,7 +32,7 @@ function AppLayout() {
             </Typography>
           </Stack>
         </Container>
-      </Box>
+      </Box> */}
 
       <Box sx={{ borderBottom: '1px solid', borderColor: 'divider', bgcolor: '#fff' }}>
         <Container maxWidth="lg">
@@ -99,7 +101,47 @@ function AppLayout() {
       <Container maxWidth="lg" sx={{ py: { xs: 5, md: 10 } }}>
         <Outlet />
       </Container>
+
+      <Box id="contact" sx={{ bgcolor: '#212529', color: '#d4dde1', borderRadius: 1.5, p: { xs: 3, md: 5 }, scrollMarginTop: { xs: 90, md: 120 } }}>
+        <Grid container spacing={3}>
+          <Grid size={{ xs: 12, md: 4 }}>
+            <Typography variant="h6" sx={{ fontWeight: 800, mb: 1.2, color: '#fff' }}>
+              ADDRESS
+            </Typography>
+            <Typography>Bhuj, Kutch, Gujarat</Typography>
+          </Grid>
+          <Grid size={{ xs: 12, md: 4 }}>
+            <Typography variant="h6" sx={{ fontWeight: 800, mb: 1.2, color: '#fff' }}>
+              MENU
+            </Typography>
+            <Typography>Home</Typography>
+            <Typography>About</Typography>
+            <Typography>Services</Typography>
+            <Typography>Contact</Typography>
+          </Grid>
+          <Grid size={{ xs: 12, md: 4 }}>
+            <Typography variant="h6" sx={{ fontWeight: 800, mb: 1.2, color: '#fff' }}>
+              NEWSLETTER
+            </Typography>
+            <Typography sx={{ mb: 1.1 }}>Subscribe by our newsletter and get updates.</Typography>
+            <Button
+              variant="contained"
+              size="small"
+              sx={{
+                bgcolor: '#f7444e',
+                '&:hover': { bgcolor: '#d83741' },
+              }}
+            >
+              Subscribe
+            </Button>
+          </Grid>
+        </Grid>
+        <Typography sx={{ mt: 3.5, pt: 2, borderTop: '1px solid #343b40', textAlign: 'center', fontSize: '0.9rem' }}>
+          © 2026 All Rights Reserved By Kraze Techies
+        </Typography>
+      </Box>
     </Box>
+    
   )
 }
 
