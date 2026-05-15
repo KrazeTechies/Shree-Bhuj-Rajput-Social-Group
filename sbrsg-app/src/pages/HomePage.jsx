@@ -1,7 +1,7 @@
-import LocalShippingRounded from '@mui/icons-material/LocalShippingRounded'
-import StarRounded from '@mui/icons-material/StarRounded'
-import SupportAgentRounded from '@mui/icons-material/SupportAgentRounded'
 import PersonRounded from '@mui/icons-material/PersonRounded'
+import VolunteerActivismRounded from '@mui/icons-material/VolunteerActivismRounded'
+import GroupsRounded from '@mui/icons-material/GroupsRounded'
+import RocketLaunchRounded from '@mui/icons-material/RocketLaunchRounded'
 
 import {
   Avatar,
@@ -12,26 +12,26 @@ import {
   Typography,
 } from '@mui/material'
 
-import HeroImage from '../assets/hero.png'
+import AboutUs from '../assets/AboutUs.png'
 import Logo from '../assets/Logo.png'
 import { useEffect, useState } from 'react'
 import { Link as RouterLink } from 'react-router-dom'
 
 const highlights = [
   {
-    title: 'Fast Delivery',
-    desc: 'Important updates and event details reach members quickly.',
-    icon: <LocalShippingRounded />,
+    title: 'સમાજ સેવા દ્વારા બદલાવ લાવવાની તક',
+    desc: 'શિક્ષણ, આરોગ્ય અને જરૂરિયાતમંદ લોકોની સહાય દ્વારા સમાજમાં સકારાત્મક પરિવર્તન લાવવાની તક મળે છે.',
+    icon: <VolunteerActivismRounded />,
   },
   {
-    title: 'Best Quality',
-    desc: 'Well-organized events with strong cultural participation.',
-    icon: <StarRounded />,
+    title: 'એકતા અને સહકારનું મજબૂત મંચ',
+    desc: 'સમાજના લોકો સાથે જોડાઈને પરસ્પર સહકાર, વિશ્વાસ અને ભાઈચારો વધારવાનો અવસર મળે છે.',
+    icon: <GroupsRounded />,
   },
   {
-    title: '24/7 Support',
-    desc: 'A connected team to help families and volunteers anytime.',
-    icon: <SupportAgentRounded />,
+    title: 'આગામી પેઢી માટે ઉત્તમ ભવિષ્ય',
+    desc: 'વિદ્યાર્થીઓને શિક્ષણ સહાય, આરોગ્ય સહાય અને સામાજિક માર્ગદર્શન દ્વારા ઉજ્જવળ ભવિષ્ય બનાવવામાં યોગદાન આપી શકાય છે.',
+    icon: <RocketLaunchRounded />,
   },
 ]
 
@@ -350,10 +350,10 @@ function HomePage() {
                 </Grid>
 
                 {/* HERO IMAGE */}
-                <Grid size={{ xs: 12, md: 5 }}>
+                <Grid size={{ xs: 25, md: 5 }}>
                   <Box
                     component="img"
-                    src={Logo}
+                    src={AboutUs}
                     alt="Community Hero"
                     sx={{
                       width: '100%',
@@ -515,12 +515,12 @@ function HomePage() {
               mb: 3.5,
             }}
           >
-            Why Shop With{' '}
+            શા માટે જોડાશો{' '}
             <Box
               component="span"
               sx={{ color: '#f7444e' }}
             >
-              Us
+              શ્રી ભુજ રાજપૂત સોશ્યલ ગ્રુપ?
             </Box>
           </Typography>
 
