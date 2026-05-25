@@ -4,4 +4,5 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   base: '/Shree-Bhuj-Rajput-Social-Group/',
+  cacheDir: '.vite-cache',
 })
