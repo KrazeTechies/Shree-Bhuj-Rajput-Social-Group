@@ -12,7 +12,7 @@ import {
   Typography,
 } from '@mui/material'
 
-import AboutUs from '../assets/AboutUs.png'
+import AboutUs from '../assets/aboutUs.png'
 import heroImage from '../assets/bhuj_image.jpg'
 
 const highlights = [
