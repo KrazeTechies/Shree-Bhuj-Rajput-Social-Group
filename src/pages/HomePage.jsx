@@ -15,6 +15,9 @@ import {
 import AboutUs from '../assets/aboutUs.png'
 import heroImage from '../assets/bhuj_image.jpg'
 
+import member1 from '../assets/team/member-1.jpeg'
+import member2 from '../assets/team/member-2.jpeg'
+
 const highlights = [
   {
     title: 'સમાજ સેવા દ્વારા બદલાવ લાવવાની તક',
@@ -42,11 +45,11 @@ const announcements = [
 const teamMembers = [
   {
     name: 'અશોકભાઈ મેર',
-    image: '/team/member-1.jpeg',
+    image: member1,
   },
   {
     name: 'ઘનશ્યામસિંહ રાઠોડ',
-    image: '',
+    image: member2,
   },
   {
     name: 'Person 1',

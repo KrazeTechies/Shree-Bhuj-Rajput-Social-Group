@@ -11,21 +11,26 @@ import {
 
 import CloseIcon from '@mui/icons-material/Close';
 
+import sliderImage1 from '../assets/slider/slide-1.jpeg'
+import sliderImage2 from '../assets/slider/slide-2.jpeg'
+import sliderImage3 from '../assets/slider/slide-3.jpeg'
+import sliderImage4 from '../assets/slider/slide-4.jpeg'
+
 const albums = [
   {
     id: 1,
     title: 'Group Tour',
     cover: {
-      src: '/slider/slide-1.jpeg',
+      src: sliderImage1,
       alt: 'Community celebration event',
     },
     images: [
       {
-        src: '/slider/slide-1.jpeg',
+        src: sliderImage1,
         alt: 'Community celebration event',
       },
       {
-        src: '/slider/slide-3.jpeg',
+        src: sliderImage3,
         alt: 'People attending social group program',
       },
     ],
@@ -35,12 +40,12 @@ const albums = [
     id: 2,
     title: 'New Office Opening',
     cover: {
-      src: '/slider/slide-2.jpeg',
+      src: sliderImage2,
       alt: 'Traditional cultural gathering',
     },
     images: [
       {
-        src: '/slider/slide-2.jpeg',
+        src: sliderImage2,
         alt: 'Traditional cultural gathering',
       },
     ],
@@ -50,12 +55,12 @@ const albums = [
     id: 3,
     title: 'Other Social Work',
     cover: {
-      src: '/slider/slide-4.jpeg',
+      src: sliderImage4,
       alt: 'SBRSG event moment',
     },
     images: [
       {
-        src: '/slider/slide-4.jpeg',
+        src: sliderImage4,
         alt: 'SBRSG event moment',
       },
     ],
