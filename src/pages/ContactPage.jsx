@@ -196,7 +196,7 @@ function ContactPage() {
                     <Typography color="#5f7280">
                       Shree Bhuj Rajput Social Group
                       <br />
-                      Rajkot, Gujarat, India
+                      Bhuj, Gujarat, India
                     </Typography>
                   </Box>
                 </Box>
@@ -226,7 +226,7 @@ function ContactPage() {
                     </Typography>
 
                     <Typography color="#5f7280">
-                      +91 98765 43210
+                      +91 94272 50955
                     </Typography>
                   </Box>
                 </Box>
