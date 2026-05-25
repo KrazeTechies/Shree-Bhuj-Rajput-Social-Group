@@ -13,9 +13,7 @@ import {
 } from '@mui/material'
 
 import AboutUs from '../assets/AboutUs.png'
-import Logo from '../assets/Logo.png'
-import { useEffect, useState } from 'react'
-import { Link as RouterLink } from 'react-router-dom'
+import heroImage from '../assets/bhuj_image.jpg'
 
 const highlights = [
   {
@@ -50,48 +48,21 @@ const teamMembers = [
     name: 'ઘનશ્યામસિંહ રાઠોડ',
     image: '',
   },
-]
-
-const sliderImages = [
   {
-    src: '/slider/slide-1.jpeg',
-    alt: 'Community celebration event',
+    name: 'Person 1',
+    image: '',
   },
   {
-    src: '/slider/slide-2.jpeg',
-    alt: 'Traditional cultural gathering',
+    name: 'Person 2',
+    image: '',
   },
   {
-    src: '/slider/slide-3.jpeg',
-    alt: 'People attending social group program',
-  },
-  {
-    src: '/slider/slide-4.jpeg',
-    alt: 'People attending social group program',
+    name: 'Person 3',
+    image: '',
   },
 ]
 
 function HomePage() {
-  const [activeSlide, setActiveSlide] = useState(0)
-
-  const handlePrevSlide = () => {
-    setActiveSlide(
-      (prev) => (prev - 1 + sliderImages.length) % sliderImages.length
-    )
-  }
-
-  const handleNextSlide = () => {
-    setActiveSlide((prev) => (prev + 1) % sliderImages.length)
-  }
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      handleNextSlide()
-    }, 3500)
-
-    return () => clearInterval(timer)
-  }, [])
-
   return (
     <>
       {/* ANNOUNCEMENT ANIMATION */}
@@ -114,49 +85,40 @@ function HomePage() {
         <Box
           id="home"
           sx={{
-            borderRadius: 1.5,
             overflow: 'hidden',
             background: '#f3f4f6',
             scrollMarginTop: { xs: 90, md: 120 },
           }}
         >
-          {/* TOP SLIDER */}
+          {/* HERO IMAGE */}
           <Box sx={{ bgcolor: '#0b172a' }}>
-            <Container maxWidth="lg" sx={{ py: { xs: 2, md: 3 } }}>
+            <Container
+              maxWidth={false}
+              disableGutters
+              sx={{
+                px: 0,
+                py: 0,
+              }}
+            >
               <Box
                 sx={{
                   position: 'relative',
                   height: { xs: 210, sm: 320, md: 430 },
-                  borderRadius: 2.5,
+                  borderRadius: 0,
                   overflow: 'hidden',
-                  boxShadow: '0 10px 30px rgba(0,0,0,0.25)',
+                  boxShadow: 'none',
                 }}
               >
-                {sliderImages.map((image, index) => (
-                  <Box
-                    key={`${image.src}-${index}`}
-                    component={RouterLink}
-                    to="/gallery"
-                    sx={{
-                      position: 'absolute',
-                      inset: 0,
-                      transition: 'opacity 0.6s ease',
-                      opacity: index === activeSlide ? 1 : 0,
-                      zIndex: 1,
-                    }}
-                  >
-                    <Box
-                      component="img"
-                      src={image.src}
-                      alt={image.alt}
-                      sx={{
-                        width: '100%',
-                        height: '100%',
-                        objectFit: 'cover',
-                      }}
-                    />
-                  </Box>
-                ))}
+                <Box
+                  component="img"
+                  src={heroImage}
+                  alt="Community celebration event"
+                  sx={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                  }}
+                />
 
                 {/* OVERLAY */}
                 <Box
@@ -165,55 +127,8 @@ function HomePage() {
                     inset: 0,
                     background:
                       'linear-gradient(to top, rgba(0,0,0,0.45), rgba(0,0,0,0.08))',
-                    zIndex: 2,
                   }}
                 />
-
-                {/* PREVIOUS BUTTON */}
-                <Box
-                  onClick={handlePrevSlide}
-                  sx={{
-                    position: 'absolute',
-                    left: 12,
-                    top: '50%',
-                    transform: 'translateY(-50%)',
-                    width: 42,
-                    height: 42,
-                    borderRadius: '50%',
-                    bgcolor: 'rgba(255,255,255,0.85)',
-                    display: 'grid',
-                    placeItems: 'center',
-                    cursor: 'pointer',
-                    zIndex: 3,
-                    fontSize: '1.5rem',
-                    fontWeight: 700,
-                  }}
-                >
-                  ‹
-                </Box>
-
-                {/* NEXT BUTTON */}
-                <Box
-                  onClick={handleNextSlide}
-                  sx={{
-                    position: 'absolute',
-                    right: 12,
-                    top: '50%',
-                    transform: 'translateY(-50%)',
-                    width: 42,
-                    height: 42,
-                    borderRadius: '50%',
-                    bgcolor: 'rgba(255,255,255,0.85)',
-                    display: 'grid',
-                    placeItems: 'center',
-                    cursor: 'pointer',
-                    zIndex: 3,
-                    fontSize: '1.5rem',
-                    fontWeight: 700,
-                  }}
-                >
-                  ›
-                </Box>
               </Box>
             </Container>
           </Box>
@@ -349,8 +264,8 @@ function HomePage() {
                   </Box>
                 </Grid>
 
-                {/* HERO IMAGE */}
-                <Grid size={{ xs: 25, md: 5 }}>
+                {/* ABOUT IMAGE */}
+                <Grid size={{ xs: 12, md: 5 }}>
                   <Box
                     component="img"
                     src={AboutUs}
@@ -386,7 +301,7 @@ function HomePage() {
                 borderRadius: 4,
                 boxShadow: '0 10px 30px rgba(0,0,0,0.08)',
                 p: { xs: 3, md: 6 },
-                textAlign: 'center'
+                textAlign: 'center',
               }}
             >
               {/* TEAM TITLE */}
@@ -442,7 +357,6 @@ function HomePage() {
                         width: '100%',
                       }}
                     >
-                      {/* TEAM IMAGE */}
                       <Avatar
                         src={member.image || undefined}
                         alt={member.name}
@@ -472,7 +386,6 @@ function HomePage() {
                         )}
                       </Avatar>
 
-                      {/* TEAM NAME */}
                       <Typography
                         variant="h6"
                         textAlign="center"
@@ -520,7 +433,7 @@ function HomePage() {
               component="span"
               sx={{ color: '#f7444e' }}
             >
-              શ્રી ભુજ રાજપૂત સોશ્યલ ગ્રુપ?
+              શ્રી ભુજ રાજપૂત સોશ્યલ ગ્રુપ માં?
             </Box>
           </Typography>
 

@@ -5,53 +5,87 @@ import {
   Stack,
   Typography,
   Grid,
-  Button
 } from '@mui/material'
-import { Link as RouterLink, Outlet } from 'react-router-dom'
+
+import {
+  Link as RouterLink,
+  Outlet,
+} from 'react-router-dom'
+
+import { useEffect, useState } from 'react'
+
 import Logo from '../assets/Logo.png'
 
 const navItems = [
   { label: 'Home', to: '/#home' },
   { label: 'Gallery', to: '/gallery' },
-  // { label: 'About', to: '/#products' },
-  // { label: 'Suggestion Box', to: '/#blog' },
   { label: 'Contact', to: '/contact' },
 ]
 
 function AppLayout() {
-  return (
-    <Box sx={{ minHeight: '100dvh', bgcolor: '#ffffff', scrollBehavior: 'smooth' }}>
-      {/* <Box sx={{ bgcolor: '#f7444e', color: '#fff', py: 1 }}>
-        <Container maxWidth="lg">
-          <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1.2} justifyContent="space-between" alignItems="center">
-            <Typography sx={{ fontSize: { xs: '0.78rem', md: '0.9rem' }, fontWeight: 500 }}>
-              Phone: +91 9427250955
-            </Typography>
-            <Typography sx={{ fontSize: { xs: '0.78rem', md: '0.9rem' }, fontWeight: 500 }}>
-              Email: rajput.social.group@gmail.com
-            </Typography>
-          </Stack>
-        </Container>
-      </Box> */}
+  const [visitorCount, setVisitorCount] =
+    useState(null)
 
-      <Box sx={{ borderBottom: '1px solid', borderColor: 'divider', bgcolor: '#fff' }}>
-        <Container maxWidth="lg">
+  useEffect(() => {
+    fetch('https://api.countapi.xyz/hit/sbrsg/homepage')
+      .then((res) => res.json())
+      .then((data) => {
+        setVisitorCount(data.value)
+      })
+      .catch((err) => console.error(err))
+  }, [])
+
+  return (
+    <Box
+      sx={{
+        minHeight: '100dvh',
+        bgcolor: '#ffffff',
+        scrollBehavior: 'smooth',
+      }}
+    >
+      {/* HEADER */}
+      <Box
+        sx={{
+          borderBottom: '1px solid',
+          borderColor: 'divider',
+          bgcolor: '#fff',
+        }}
+      >
+        <Container
+          maxWidth="lg"
+          sx={{
+            px: { xs: 2, md: 3 },
+          }}
+        >
           <Stack
             direction={{ xs: 'column', md: 'row' }}
             spacing={{ xs: 1.2, md: 2 }}
             sx={{
-              py: { xs: 1.1, md: 1.5 },
+              py: { xs: 1, md: 1.2 },
               alignItems: { xs: 'center', md: 'center' },
-              justifyContent: { xs: 'center', md: 'space-between' },
+              justifyContent: {
+                xs: 'center',
+                md: 'space-between',
+              },
             }}
           >
-            <Stack direction="row" spacing={1.5} alignItems="center">
+            {/* LOGO */}
+            <Stack
+              direction="row"
+              spacing={1.5}
+              alignItems="center"
+            >
               <Box
                 component="img"
                 src={Logo}
                 alt="SBRSG Logo"
-                sx={{ width: 125, height: 125, objectFit: 'contain' }}
+                sx={{
+                  width: 110,
+                  height: 110,
+                  objectFit: 'contain',
+                }}
               />
+
               <Typography
                 variant="h5"
                 sx={{
@@ -61,7 +95,10 @@ function AppLayout() {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  fontSize: '26px',
+                  fontSize: {
+                    xs: '20px',
+                    md: '26px',
+                  },
                   textAlign: 'center',
                 }}
               >
@@ -69,13 +106,20 @@ function AppLayout() {
               </Typography>
             </Stack>
 
+            {/* NAVIGATION */}
             <Stack
               direction="row"
               spacing={{ xs: 1.2, md: 2.2 }}
               alignItems="center"
-              justifyContent={{ xs: 'center', md: 'flex-end' }}
+              justifyContent={{
+                xs: 'center',
+                md: 'flex-end',
+              }}
               flexWrap="wrap"
-              sx={{ rowGap: 1, width: { xs: '100%', md: 'auto' } }}
+              sx={{
+                rowGap: 1,
+                width: { xs: '100%', md: 'auto' },
+              }}
             >
               {navItems.map((item) => (
                 <Link
@@ -85,9 +129,14 @@ function AppLayout() {
                   underline="none"
                   sx={{
                     color: '#002c3e',
-                    fontWeight: item.label === 'Home' ? 700 : 600,
+                    fontWeight:
+                      item.label === 'Home'
+                        ? 700
+                        : 600,
                     fontSize: '0.96rem',
-                    '&:hover': { color: '#f7444e' },
+                    '&:hover': {
+                      color: '#f7444e',
+                    },
                   }}
                 >
                   {item.label}
@@ -98,50 +147,158 @@ function AppLayout() {
         </Container>
       </Box>
 
-      <Container maxWidth="lg" sx={{ py: { xs: 5, md: 10 } }}>
+      {/* PAGE CONTENT */}
+      <Box
+        sx={{
+          px: { xs: 2, sm: 3, md: 4 },
+          py: { xs: 2, md: 3 },
+          mt: 0,
+        }}
+      >
         <Outlet />
-      </Container>
+      </Box>
 
-      <Box id="contact" sx={{ bgcolor: '#212529', color: '#d4dde1', borderRadius: 1.5, p: { xs: 3, md: 5 }, scrollMarginTop: { xs: 90, md: 120 } }}>
+      {/* FOOTER */}
+      <Box
+        id="contact"
+        sx={{
+          bgcolor: '#212529',
+          color: '#d4dde1',
+          px: { xs: 3, md: 5 },
+          py: { xs: 4, md: 5 },
+          scrollMarginTop: {
+            xs: 90,
+            md: 120,
+          },
+        }}
+      >
         <Grid container spacing={3}>
+          {/* ADDRESS */}
           <Grid size={{ xs: 12, md: 4 }}>
-            <Typography variant="h6" sx={{ fontWeight: 800, mb: 1.2, color: '#fff' }}>
-              ADDRESS
-            </Typography>
-            <Typography>Bhuj, Kutch, Gujarat</Typography>
-          </Grid>
-          <Grid size={{ xs: 12, md: 4 }}>
-            <Typography variant="h6" sx={{ fontWeight: 800, mb: 1.2, color: '#fff' }}>
-              MENU
-            </Typography>
-            <Typography>Home</Typography>
-            <Typography>About</Typography>
-            <Typography>Services</Typography>
-            <Typography>Contact</Typography>
-          </Grid>
-          <Grid size={{ xs: 12, md: 4 }}>
-            <Typography variant="h6" sx={{ fontWeight: 800, mb: 1.2, color: '#fff' }}>
-              NEWSLETTER
-            </Typography>
-            <Typography sx={{ mb: 1.1 }}>Subscribe by our newsletter and get updates.</Typography>
-            <Button
-              variant="contained"
-              size="small"
+            <Typography
+              variant="h6"
               sx={{
-                bgcolor: '#f7444e',
-                '&:hover': { bgcolor: '#d83741' },
+                fontWeight: 800,
+                mb: 1.2,
+                color: '#fff',
               }}
             >
-              Subscribe
-            </Button>
+              ADDRESS
+            </Typography>
+
+            <Typography>
+              Bhuj, Kutch, Gujarat
+            </Typography>
+          </Grid>
+
+          {/* FOOTER MENU */}
+          <Grid size={{ xs: 12, md: 4 }}>
+            <Typography
+              variant="h6"
+              sx={{
+                fontWeight: 800,
+                mb: 1.2,
+                color: '#fff',
+              }}
+            >
+              MENU
+            </Typography>
+
+            <Stack spacing={1}>
+              <Link
+                component={RouterLink}
+                to="/#home"
+                underline="none"
+                sx={{
+                  color: '#d4dde1',
+                  fontWeight: 500,
+                  width: 'fit-content',
+                  '&:hover': {
+                    color: '#f7444e',
+                  },
+                }}
+              >
+                Home
+              </Link>
+
+              <Link
+                component={RouterLink}
+                to="/gallery"
+                underline="none"
+                sx={{
+                  color: '#d4dde1',
+                  fontWeight: 500,
+                  width: 'fit-content',
+                  '&:hover': {
+                    color: '#f7444e',
+                  },
+                }}
+              >
+                Gallery
+              </Link>
+
+              <Link
+                component={RouterLink}
+                to="/contact"
+                underline="none"
+                sx={{
+                  color: '#d4dde1',
+                  fontWeight: 500,
+                  width: 'fit-content',
+                  '&:hover': {
+                    color: '#f7444e',
+                  },
+                }}
+              >
+                Contact
+              </Link>
+            </Stack>
+          </Grid>
+
+          {/* VISITOR COUNTER */}
+          <Grid size={{ xs: 12, md: 4 }}>
+            <Typography
+              variant="h6"
+              sx={{
+                fontWeight: 800,
+                mb: 1.2,
+                color: '#fff',
+              }}
+            >
+              WEBSITE VISITORS
+            </Typography>
+
+            <Typography
+              sx={{
+                fontSize: '2rem',
+                fontWeight: 700,
+                color: '#f7444e',
+                mb: 1,
+              }}
+            >
+              {visitorCount ?? '...'}
+            </Typography>
+
+            <Typography sx={{ mb: 1.1 }}>
+              Thank you for visiting our website.
+            </Typography>
           </Grid>
         </Grid>
-        <Typography sx={{ mt: 3.5, pt: 2, borderTop: '1px solid #343b40', textAlign: 'center', fontSize: '0.9rem' }}>
+
+        {/* COPYRIGHT */}
+        <Typography
+          sx={{
+            mt: 3.5,
+            pt: 2,
+            borderTop: '1px solid #343b40',
+            textAlign: 'center',
+            fontSize: '0.9rem',
+          }}
+        >
           © 2026 All Rights Reserved By Kraze Techies
         </Typography>
       </Box>
     </Box>
-    
   )
 }
 
