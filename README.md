@@ -1,5 +1,17 @@
 # React + Vite
 
+## GitHub Pages
+
+This app deploys through GitHub Actions whenever changes are pushed to `main`.
+
+Live URL:
+
+```text
+https://krazetechies.github.io/Shree-Bhuj-Rajput-Social-Group/
+```
+
+In the GitHub repository, set **Settings > Pages > Build and deployment > Source** to **GitHub Actions**.
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
