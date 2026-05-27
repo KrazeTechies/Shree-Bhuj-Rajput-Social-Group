@@ -1,7 +1,10 @@
+import { useState } from 'react'
+
 import PersonRounded from '@mui/icons-material/PersonRounded'
 import VolunteerActivismRounded from '@mui/icons-material/VolunteerActivismRounded'
 import GroupsRounded from '@mui/icons-material/GroupsRounded'
 import RocketLaunchRounded from '@mui/icons-material/RocketLaunchRounded'
+import CloseRounded from '@mui/icons-material/CloseRounded'
 
 import {
   Avatar,
@@ -10,6 +13,8 @@ import {
   Grid,
   Stack,
   Typography,
+  Dialog,
+  IconButton,
 } from '@mui/material'
 
 import AboutUs from '../assets/aboutUs.png'
@@ -17,6 +22,10 @@ import heroImage from '../assets/bhuj_image.jpg'
 
 import member1 from '../assets/team/member-1.jpeg'
 import member2 from '../assets/team/member-2.jpeg'
+
+/* ANNOUNCEMENT IMAGES */
+import ad1 from '../assets/advertise/ad-1.png'
+import ad2 from '../assets/advertise/ad-2.png'
 
 const highlights = [
   {
@@ -36,10 +45,14 @@ const highlights = [
   },
 ]
 
+/* ANNOUNCEMENT IMAGES ARRAY */
 const announcements = [
-  'તલાટી તથા ટેટ ના ચોપડા સમાજ ના કોઈ પણ વિદ્યાર્થી કે વિદ્યાર્થીની ને જરૂરિયાત હોય તો સોશ્યલ ગ્રૂપ ની ઓફીસ પર થી લઈ જવા વિનંતી.(આ ચોપડા વિનામુલ્યે આપવામા આવશે)',
-
-  'ધોરણ ૯ ના ચોપડા સમાજ ના કોઈ પણ વિદ્યાર્થી કે વિદ્યાર્થીની ને જરૂરિયાત હોય તો સોશ્યલ ગ્રૂપ ની ઓફીસ પર થી લઈ જવા વિનંતી.(આ ચોપડા વિનામુલ્યે આપવામા આવશે)',
+  {
+    image: ad1,
+  },
+  {
+    image: ad2,
+  },
 ]
 
 const teamMembers = [
@@ -66,18 +79,38 @@ const teamMembers = [
 ]
 
 function HomePage() {
+  const [openImage, setOpenImage] = useState(null)
+
+  const handleOpenImage = (image) => {
+    setOpenImage(image)
+  }
+
+  const handleCloseImage = () => {
+    setOpenImage(null)
+  }
+
   return (
     <>
       {/* ANNOUNCEMENT ANIMATION */}
       <style>
         {`
-          @keyframes scrollAnnouncements {
+          @keyframes scrollAnnouncementsDesktop {
             0% {
               transform: translateY(0%);
             }
 
             100% {
               transform: translateY(-50%);
+            }
+          }
+
+          @keyframes scrollAnnouncementsMobile {
+            0% {
+              transform: translateX(0%);
+            }
+
+            100% {
+              transform: translateX(-50%);
             }
           }
         `}
@@ -106,10 +139,13 @@ function HomePage() {
               <Box
                 sx={{
                   position: 'relative',
-                  height: { xs: 210, sm: 320, md: 430 },
-                  borderRadius: 0,
+                  height: {
+                    xs: 220,
+                    sm: 320,
+                    md: 430,
+                    lg: 520,
+                  },
                   overflow: 'hidden',
-                  boxShadow: 'none',
                 }}
               >
                 <Box
@@ -138,17 +174,27 @@ function HomePage() {
 
           {/* ANNOUNCEMENTS + ABOUT */}
           <Grid container spacing={0}>
-            {/* LEFT ANNOUNCEMENT PANEL */}
+            {/* ANNOUNCEMENT SECTION */}
             <Grid size={{ xs: 12, md: 3 }}>
               <Box
                 sx={{
                   bgcolor: '#0b172a',
                   color: '#fff',
-                  minHeight: { xs: 320, md: 520 },
-                  overflow: 'hidden',
                   position: 'relative',
+
+                  /* RESPONSIVE HEIGHT */
+                  height: {
+                    xs: 280,
+                    sm: 340,
+                    md: 520,
+                    lg: 620,
+                    xl: 720,
+                  },
+
+                  overflow: 'hidden',
                 }}
               >
+                {/* TITLE */}
                 <Typography
                   variant="h5"
                   sx={{
@@ -158,24 +204,35 @@ function HomePage() {
                     bgcolor: '#08111f',
                     borderBottom:
                       '1px solid rgba(255,255,255,0.1)',
+                    fontSize: {
+                      xs: '1.2rem',
+                      md: '1.5rem',
+                    },
                   }}
                 >
                   Announcements
                 </Typography>
 
+                {/* MOBILE + TABLET VIEW */}
                 <Box
                   sx={{
-                    height: 'calc(100% - 70px)',
+                    display: {
+                      xs: 'block',
+                      md: 'none',
+                    },
+                    width: '100%',
                     overflow: 'hidden',
-                    position: 'relative',
+                    height: 'calc(100% - 72px)',
                   }}
                 >
                   <Stack
+                    direction="row"
                     spacing={2}
                     sx={{
+                      width: 'max-content',
                       p: 2,
                       animation:
-                        'scrollAnnouncements 15s linear infinite',
+                        'scrollAnnouncementsMobile 20s linear infinite',
                       '&:hover': {
                         animationPlayState: 'paused',
                       },
@@ -185,23 +242,105 @@ function HomePage() {
                       (item, index) => (
                         <Box
                           key={index}
+                          onClick={() =>
+                            handleOpenImage(item.image)
+                          }
                           sx={{
-                            p: 2,
-                            borderRadius: 2,
-                            bgcolor: 'rgba(255,255,255,0.08)',
-                            border:
-                              '1px solid rgba(255,255,255,0.08)',
-                            backdropFilter: 'blur(4px)',
+                            minWidth: {
+                              xs: 220,
+                              sm: 280,
+                            },
+                            borderRadius: 3,
+                            overflow: 'hidden',
+                            cursor: 'pointer',
+                            flexShrink: 0,
+                            boxShadow:
+                              '0 6px 20px rgba(0,0,0,0.3)',
+                            transition: '0.3s ease',
+                            '&:hover': {
+                              transform: 'scale(1.03)',
+                            },
                           }}
                         >
-                          <Typography
+                          <Box
+                            component="img"
+                            src={item.image}
+                            alt={`Announcement ${index + 1}`}
                             sx={{
-                              fontSize: '0.95rem',
-                              lineHeight: 1.7,
+                              width: '100%',
+                              height: {
+                                xs: 180,
+                                sm: 240,
+                              },
+                              objectFit: 'cover',
+                              display: 'block',
                             }}
-                          >
-                            {item}
-                          </Typography>
+                          />
+                        </Box>
+                      )
+                    )}
+                  </Stack>
+                </Box>
+
+                {/* DESKTOP + TV VIEW */}
+                <Box
+                  sx={{
+                    display: {
+                      xs: 'none',
+                      md: 'block',
+                    },
+                    height: 'calc(100% - 72px)',
+                    overflow: 'hidden',
+                  }}
+                >
+                  <Stack
+                    spacing={2}
+                    sx={{
+                      p: 2,
+                      animation:
+                        'scrollAnnouncementsDesktop 18s linear infinite',
+                      '&:hover': {
+                        animationPlayState: 'paused',
+                      },
+                    }}
+                  >
+                    {[...announcements, ...announcements].map(
+                      (item, index) => (
+                        <Box
+                          key={index}
+                          onClick={() =>
+                            handleOpenImage(item.image)
+                          }
+                          sx={{
+                            borderRadius: 3,
+                            overflow: 'hidden',
+                            cursor: 'pointer',
+                            boxShadow:
+                              '0 6px 20px rgba(0,0,0,0.25)',
+                            transition: '0.3s ease',
+                            '&:hover': {
+                              transform: 'scale(1.02)',
+                            },
+                          }}
+                        >
+                          <Box
+                            component="img"
+                            src={item.image}
+                            alt={`Announcement ${index + 1}`}
+                            sx={{
+                              width: '100%',
+
+                              /* RESPONSIVE IMAGE HEIGHT */
+                              height: {
+                                md: 320,
+                                lg: 420,
+                                xl: 520,
+                              },
+
+                              objectFit: 'cover',
+                              display: 'block',
+                            }}
+                          />
                         </Box>
                       )
                     )}
@@ -210,15 +349,22 @@ function HomePage() {
               </Box>
             </Grid>
 
-            {/* RIGHT ABOUT SECTION */}
+            {/* ABOUT SECTION */}
             <Grid size={{ xs: 12, md: 9 }}>
               <Grid container spacing={0}>
                 {/* ABOUT TEXT */}
                 <Grid size={{ xs: 12, md: 7 }}>
                   <Box
                     sx={{
-                      p: { xs: 3, md: 7 },
-                      pt: { xs: 4, md: 9 },
+                      p: {
+                        xs: 3,
+                        sm: 4,
+                        md: 7,
+                      },
+                      pt: {
+                        xs: 4,
+                        md: 9,
+                      },
                     }}
                   >
                     <Typography
@@ -228,7 +374,9 @@ function HomePage() {
                         color: '#002c3e',
                         fontSize: {
                           xs: '2rem',
+                          sm: '2.5rem',
                           md: '4rem',
+                          lg: '5rem',
                         },
                         lineHeight: 1.05,
                       }}
@@ -249,9 +397,11 @@ function HomePage() {
                         color: '#4f6572',
                         fontSize: {
                           xs: '1rem',
+                          sm: '1.05rem',
                           md: '1.04rem',
+                          lg: '1.15rem',
                         },
-                        maxWidth: 540,
+                        maxWidth: 700,
                         mt: 2.5,
                         lineHeight: 1.9,
                       }}
@@ -276,7 +426,12 @@ function HomePage() {
                     sx={{
                       width: '100%',
                       height: '100%',
-                      minHeight: { xs: 260, md: 520 },
+                      minHeight: {
+                        xs: 260,
+                        sm: 340,
+                        md: 520,
+                        lg: 620,
+                      },
                       objectFit: 'cover',
                     }}
                   />
@@ -307,7 +462,6 @@ function HomePage() {
                 textAlign: 'center',
               }}
             >
-              {/* TEAM TITLE */}
               <Typography
                 variant="h4"
                 textAlign="center"
@@ -330,7 +484,6 @@ function HomePage() {
                 </Box>
               </Typography>
 
-              {/* TEAM MEMBERS */}
               <Grid
                 container
                 spacing={4}
@@ -347,7 +500,6 @@ function HomePage() {
                     sx={{
                       display: 'flex',
                       justifyContent: 'center',
-                      alignItems: 'center',
                     }}
                   >
                     <Box
@@ -356,7 +508,6 @@ function HomePage() {
                         display: 'flex',
                         flexDirection: 'column',
                         alignItems: 'center',
-                        justifyContent: 'center',
                         width: '100%',
                       }}
                     >
@@ -395,10 +546,6 @@ function HomePage() {
                         sx={{
                           fontWeight: 700,
                           color: '#002c3e',
-                          fontSize: {
-                            xs: '1rem',
-                            md: '1.1rem',
-                          },
                         }}
                       >
                         {member.name}
@@ -492,6 +639,86 @@ function HomePage() {
           </Grid>
         </Box>
       </Stack>
+
+      {/* FULL SCREEN IMAGE VIEW */}
+      <Dialog
+        open={Boolean(openImage)}
+        onClose={handleCloseImage}
+        fullScreen
+        sx={{
+          '& .MuiDialog-paper': {
+            bgcolor: '#000',
+          },
+        }}
+      >
+        <Box
+          sx={{
+            width: '100%',
+            height: '100vh',
+            position: 'relative',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            bgcolor: '#000',
+          }}
+        >
+          {/* CLOSE BUTTON */}
+          <IconButton
+            onClick={handleCloseImage}
+            sx={{
+              position: 'absolute',
+              top: {
+                xs: 10,
+                md: 20,
+              },
+              right: {
+                xs: 10,
+                md: 20,
+              },
+              zIndex: 10,
+              bgcolor: 'rgba(255,255,255,0.15)',
+              color: '#fff',
+              width: {
+                xs: 42,
+                md: 50,
+              },
+              height: {
+                xs: 42,
+                md: 50,
+              },
+              '&:hover': {
+                bgcolor: 'rgba(255,255,255,0.25)',
+              },
+            }}
+          >
+            <CloseRounded
+              sx={{
+                fontSize: {
+                  xs: 24,
+                  md: 30,
+                },
+              }}
+            />
+          </IconButton>
+
+          {/* FULL IMAGE */}
+          <Box
+            component="img"
+            src={openImage}
+            alt="Announcement Full View"
+            sx={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'contain',
+              p: {
+                xs: 1,
+                sm: 2,
+                md: 4,
+              },
+            }}
+          />
+        </Box>
+      </Dialog>
     </>
   )
 }
