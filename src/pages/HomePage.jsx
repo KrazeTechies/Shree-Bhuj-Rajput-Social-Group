@@ -24,8 +24,8 @@ import member1 from '../assets/team/member-1.jpeg'
 import member2 from '../assets/team/member-2.jpeg'
 
 /* ANNOUNCEMENT IMAGES */
-import ad1 from '../assets/advertise/ad-1.png'
-import ad2 from '../assets/advertise/ad-2.png'
+import ad1 from '../assets/advertise/ad-1.jpg'
+import ad2 from '../assets/advertise/ad-2.jpg'
 
 const highlights = [
   {
