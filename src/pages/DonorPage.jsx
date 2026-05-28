@@ -19,8 +19,8 @@ import PersonRounded from '@mui/icons-material/PersonRounded'
 import SearchRounded from '@mui/icons-material/SearchRounded'
 
 // Replace these image paths with your own images
-import Photo1 from '../assets/donor/donor-1.jpeg'
-import Photo2 from '../assets/donor/donor-2.jpeg'
+import Photo1 from '../assets/Donor/donor-1.jpeg'
+import Photo2 from '../assets/Donor/donor-2.jpeg'
 
 const galleryPhotos = [
   {
