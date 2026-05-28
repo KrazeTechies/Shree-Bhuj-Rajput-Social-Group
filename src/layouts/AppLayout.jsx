@@ -14,11 +14,12 @@ import {
 
 import { useEffect, useState } from 'react'
 
-import Logo from '../assets/Logo.png'
+import Logo from '../assets/Logo.jpeg'
 
 const navItems = [
   { label: 'Home', to: '/#home' },
   { label: 'Gallery', to: '/gallery' },
+  { label: 'Donors', to: '/donors' },
   { label: 'Contact', to: '/contact' },
 ]
 
@@ -70,41 +71,52 @@ function AppLayout() {
             }}
           >
             {/* LOGO */}
-            <Stack
-              direction="row"
-              spacing={1.5}
-              alignItems="center"
+            <Link
+              component={RouterLink}
+              to="/"
+              underline="none"
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+              }}
             >
-              <Box
-                component="img"
-                src={Logo}
-                alt="SBRSG Logo"
-                sx={{
-                  width: 110,
-                  height: 110,
-                  objectFit: 'contain',
-                }}
-              />
-
-              <Typography
-                variant="h5"
-                sx={{
-                  fontWeight: 800,
-                  color: 'darkslateblue',
-                  lineHeight: 1.1,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontSize: {
-                    xs: '20px',
-                    md: '26px',
-                  },
-                  textAlign: 'center',
-                }}
+              <Stack
+                direction="row"
+                spacing={1.5}
+                alignItems="center"
               >
-                Shree Bhuj Rajput Social Group
-              </Typography>
-            </Stack>
+                <Box
+                  component="img"
+                  src={Logo}
+                  alt="SBRSG Logo"
+                  sx={{
+                    width: 110,
+                    height: 110,
+                    objectFit: 'contain',
+                    cursor: 'pointer',
+                  }}
+                />
+
+                <Typography
+                  variant="h5"
+                  sx={{
+                    fontWeight: 800,
+                    color: 'darkslateblue',
+                    lineHeight: 1.1,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontSize: {
+                      xs: '20px',
+                      md: '26px',
+                    },
+                    textAlign: 'center',
+                  }}
+                >
+                  Shree Bhuj Rajput Social Group
+                </Typography>
+              </Stack>
+            </Link>
 
             {/* NAVIGATION */}
             <Stack
@@ -239,6 +251,22 @@ function AppLayout() {
 
               <Link
                 component={RouterLink}
+                to="/donors"
+                underline="none"
+                sx={{
+                  color: '#d4dde1',
+                  fontWeight: 500,
+                  width: 'fit-content',
+                  '&:hover': {
+                    color: '#f7444e',
+                  },
+                }}
+              >
+                Donors
+              </Link>
+
+              <Link
+                component={RouterLink}
                 to="/contact"
                 underline="none"
                 sx={{
@@ -252,6 +280,7 @@ function AppLayout() {
               >
                 Contact
               </Link>
+
             </Stack>
           </Grid>
 

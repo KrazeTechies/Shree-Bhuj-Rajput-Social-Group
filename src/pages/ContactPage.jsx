@@ -41,7 +41,7 @@ function ContactPage() {
               color: '#002c3e',
               maxWidth: '700px',
               mx: 'auto',
-              textAlign:'center',
+              textAlign: 'center',
               fontSize: {
                 xs: '2rem',
                 md: '2.8rem',
@@ -72,7 +72,7 @@ function ContactPage() {
           justifyContent="center"
           alignItems="stretch"
           style={{
-            margin:'0 auto'
+            margin: '0 auto'
           }}
           data-testid='center-box'
         >
@@ -116,14 +116,15 @@ function ContactPage() {
               <Box
                 component="iframe"
                 title="Location Map"
-                src="https://www.google.com/maps?q=22.3039,70.8022&output=embed"
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d173.03176093813659!2d69.65518661591153!3d23.244345294253915!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39511f3680637f35%3A0xd13872b5e36cc9cb!2sDAVE%20PRACHI%20SHANTILAL!5e1!3m2!1sen!2sin!4v1779962502166!5m2!1sen!2sin"
                 width="100%"
                 height="500"
                 sx={{
                   border: 0,
                 }}
-                allowFullScreen=""
+                allowFullScreen
                 loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
               />
             </Paper>
           </Grid>
@@ -194,7 +195,8 @@ function ContactPage() {
                     </Typography>
 
                     <Typography color="#5f7280">
-                      Shree Bhuj Rajput Social Group
+                      Near Bapa Sitaram Madhuli,
+                      S.T. Workshops Road
                       <br />
                       Bhuj, Gujarat, India
                     </Typography>
@@ -226,7 +228,10 @@ function ContactPage() {
                     </Typography>
 
                     <Typography color="#5f7280">
-                      +91 94272 50955
+                      Ashok Mer - +91 94272 50955
+                    </Typography>
+                    <Typography color="#5f7280">
+                      Ghanshyamsinh Rathod - +91 98250 58850
                     </Typography>
                   </Box>
                 </Box>
@@ -256,7 +261,7 @@ function ContactPage() {
                     </Typography>
 
                     <Typography color="#5f7280">
-                      info@sbrsg.org
+                      rajput.social.group@gmail.com
                     </Typography>
                   </Box>
                 </Box>

@@ -18,7 +18,7 @@ import {
 } from '@mui/material'
 
 import AboutUs from '../assets/aboutUs.png'
-import heroImage from '../assets/bhuj_image.jpg'
+import heroImage from '../assets/banner.jpeg'
 
 import member1 from '../assets/team/member-1.jpeg'
 import member2 from '../assets/team/member-2.jpeg'
@@ -57,7 +57,7 @@ const announcements = [
 
 const teamMembers = [
   {
-    name: 'અશોકભાઈ મેર',
+    name: 'અશોક મેર',
     image: member1,
   },
   {
@@ -126,48 +126,72 @@ function HomePage() {
             scrollMarginTop: { xs: 90, md: 120 },
           }}
         >
-          {/* HERO IMAGE */}
-          <Box sx={{ bgcolor: '#0b172a' }}>
-            <Container
-              maxWidth={false}
-              disableGutters
+          {/* HERO BANNER SECTION */}
+          <Box
+            sx={{
+              position: 'relative',
+              width: '100%',
+              overflow: 'hidden',
+              backgroundColor: '#000',
+            }}
+          >
+            {/* BANNER IMAGE */}
+            <Box
+              component="img"
+              src={heroImage}
+              alt="Community Banner"
               sx={{
-                px: 0,
-                py: 0,
+                width: '100%',
+
+                /* LITTLE BIT LARGER BANNER */
+                height: {
+                  xs: 150,
+                  sm: 210,
+                  md: 300,
+                  lg: 380,
+                  xl: 450,
+                },
+
+                objectFit: 'cover',
+                objectPosition: 'center',
+                display: 'block',
+              }}
+            />
+
+            {/* DARK OVERLAY */}
+            <Box
+              sx={{
+                position: 'absolute',
+                inset: 0,
+                background:
+                  'linear-gradient(to top, rgba(0,0,0,0.55), rgba(0,0,0,0.15))',
+              }}
+            />
+
+            {/* BANNER CONTENT */}
+            <Container
+              maxWidth="xl"
+              sx={{
+                position: 'absolute',
+                inset: 0,
+                display: 'flex',
+                alignItems: 'center',
+                zIndex: 2,
               }}
             >
               <Box
                 sx={{
-                  position: 'relative',
-                  height: {
-                    xs: 220,
-                    sm: 320,
-                    md: 430,
-                    lg: 520,
+                  maxWidth: {
+                    xs: '100%',
+                    md: 650,
                   },
-                  overflow: 'hidden',
+                  px: {
+                    xs: 2,
+                    sm: 3,
+                    md: 5,
+                  },
                 }}
               >
-                <Box
-                  component="img"
-                  src={heroImage}
-                  alt="Community celebration event"
-                  sx={{
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'cover',
-                  }}
-                />
-
-                {/* OVERLAY */}
-                <Box
-                  sx={{
-                    position: 'absolute',
-                    inset: 0,
-                    background:
-                      'linear-gradient(to top, rgba(0,0,0,0.45), rgba(0,0,0,0.08))',
-                  }}
-                />
               </Box>
             </Container>
           </Box>
@@ -182,7 +206,6 @@ function HomePage() {
                   color: '#fff',
                   position: 'relative',
 
-                  /* RESPONSIVE HEIGHT */
                   height: {
                     xs: 280,
                     sm: 340,
@@ -330,7 +353,6 @@ function HomePage() {
                             sx={{
                               width: '100%',
 
-                              /* RESPONSIVE IMAGE HEIGHT */
                               height: {
                                 md: 320,
                                 lg: 420,
