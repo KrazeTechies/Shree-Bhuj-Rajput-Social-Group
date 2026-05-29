@@ -5,6 +5,7 @@ import AboutPage from '../pages/AboutPage'
 import GalleryPage from '../pages/GalleryPage'
 import ContactPage from '../pages/ContactPage'
 import DonorPage from '../pages/DonorPage'
+import MonthlyAccountPage from '../pages/MonthlyAccountPage'
 
 export const router = createHashRouter([
   {
@@ -15,6 +16,7 @@ export const router = createHashRouter([
       { path: 'about', element: <AboutPage /> },
       { path: 'gallery', element: <GalleryPage /> },
       { path: 'donors', element: <DonorPage />},
+      { path: 'monthlyaccount', element: <MonthlyAccountPage /> },
       { path: 'contact', element: <ContactPage />},
     ],
   },

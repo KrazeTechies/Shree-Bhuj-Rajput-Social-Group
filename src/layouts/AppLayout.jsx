@@ -20,7 +20,9 @@ const navItems = [
   { label: 'Home', to: '/#home' },
   { label: 'Gallery', to: '/gallery' },
   { label: 'Donors', to: '/donors' },
+  { label: 'Monthly Account', to: '/monthlyaccount' },
   { label: 'Contact', to: '/contact' },
+  
 ]
 
 function AppLayout() {
@@ -263,6 +265,22 @@ function AppLayout() {
                 }}
               >
                 Donors
+              </Link>
+
+              <Link
+                component={RouterLink}
+                to="/monthlyaccount"
+                underline="none"
+                sx={{
+                  color: '#d4dde1',
+                  fontWeight: 500,
+                  width: 'fit-content',
+                  '&:hover': {
+                    color: '#f7444e',
+                  },
+                }}
+              >
+                Monthly Account
               </Link>
 
               <Link
