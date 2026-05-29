@@ -20,13 +20,13 @@ import PictureAsPdfRoundedIcon from '@mui/icons-material/PictureAsPdfRounded'
 import OpenInNewRoundedIcon from '@mui/icons-material/OpenInNewRounded'
 
 // Import PDFs from src/assets/account folder
-import pdf2026May from '../assets/account/may-2026.pdf'
-import pdf2026MarchApril from '../assets/account/march-april-2026.pdf'
-import Pdf2026JanFeb from '../assets/account/jan-feb-2026.pdf'
-import pdf2025JanFeb from '../assets/account/jan-feb-2025.pdf'
-import pdf2025NovDec from '../assets/account/nov-dec-2025.pdf'
-import pdf2024Dec from '../assets/account/dec-2024.pdf'
-import pdf2024OctNov from '../assets/account/oct-nov-2024.pdf'
+import pdf2026May from '../assets/account/may-2026.PDF'
+import pdf2026MarchApril from '../assets/account/march-april-2026.PDF'
+import Pdf2026JanFeb from '../assets/account/jan-feb-2026.PDF'
+import pdf2025JanFeb from '../assets/account/jan-feb-2025.PDF'
+import pdf2025NovDec from '../assets/account/nov-dec-2025.PDF'
+import pdf2024Dec from '../assets/account/dec-2024.PDF'
+import pdf2024OctNov from '../assets/account/oct-nov-2024.PDF'
 
 const pdfData = [
     {
