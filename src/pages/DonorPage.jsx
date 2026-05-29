@@ -19,8 +19,9 @@ import PersonRounded from '@mui/icons-material/PersonRounded'
 import SearchRounded from '@mui/icons-material/SearchRounded'
 
 // Replace these image paths with your own images
-import Photo1 from '../assets/Donor/donor-1.jpeg'
-import Photo2 from '../assets/Donor/donor-2.jpeg'
+import Photo1 from '../assets/team/member-1.jpeg'
+import Photo2 from '../assets/team/member-2.jpeg'
+import Photo3 from '../assets/Donor/donor-3.jpeg'
 
 const galleryPhotos = [
   {
@@ -40,8 +41,8 @@ const galleryPhotos = [
   },
   {
     id: 4,
-    name: 'Amar Ushaben Dineshbhai',
-    image: '',
+    name: 'Naranji dhanubha rathod',
+    image: Photo3,
   },
   {
     id: 5,
