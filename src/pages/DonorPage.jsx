@@ -22,6 +22,7 @@ import SearchRounded from '@mui/icons-material/SearchRounded'
 import Photo1 from '../assets/team/member-1.jpeg'
 import Photo2 from '../assets/team/member-2.jpeg'
 import Photo3 from '../assets/Donor/donor-3.jpeg'
+import Photo4 from '../assets/team/member-3.jpeg'
 
 const galleryPhotos = [
   {
@@ -36,8 +37,8 @@ const galleryPhotos = [
   },
   {
     id: 3,
-    name: 'Abda Vijaybhai Laljibhai',
-    image: '',
+    name: 'Jayesh N. Sisodiya',
+    image: Photo4,
   },
   {
     id: 4,

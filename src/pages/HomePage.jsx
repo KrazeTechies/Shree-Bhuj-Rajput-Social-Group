@@ -22,6 +22,7 @@ import heroImage from '../assets/banner.jpeg'
 
 import member1 from '../assets/team/member-1.jpeg'
 import member2 from '../assets/team/member-2.jpeg'
+import member3 from '../assets/team/member-3.jpeg'
 
 /* ANNOUNCEMENT IMAGES */
 import ad1 from '../assets/advertise/ad-1.jpg'
@@ -65,8 +66,8 @@ const teamMembers = [
     image: member2,
   },
   {
-    name: 'Person 1',
-    image: '',
+    name: 'જયેશ એન. સિસોદિયા',
+    image: member3,
   },
   {
     name: 'Person 2',
@@ -226,14 +227,31 @@ function HomePage() {
                     fontWeight: 800,
                     bgcolor: '#08111f',
                     borderBottom:
-                      '1px solid rgba(255,255,255,0.1)',
+                      '0.5px solid rgba(255,255,255,0.1)',
                     fontSize: {
                       xs: '1.2rem',
                       md: '1.5rem',
                     },
                   }}
                 >
-                  Announcements
+                  Advertisements
+                </Typography>
+
+                <Typography
+                  sx={{
+                    textAlign: 'center',
+                    py: 2,
+                    fontWeight: 100,
+                    bgcolor: '#08111f',
+                    borderBottom:
+                      '1px solid rgba(255,255,255,0.1)',
+                    fontSize: {
+                      xs: '1.0rem',
+                      md: '0.8rem',
+                    },
+                  }}
+                >
+                  તમારી જાહેરાત બતાવવા માટે, એડમિનનો સંપર્ક કરો
                 </Typography>
 
                 {/* MOBILE + TABLET VIEW */}

@@ -21,6 +21,7 @@ const navItems = [
   { label: 'Gallery', to: '/gallery' },
   { label: 'Donors', to: '/donors' },
   { label: 'Monthly Account', to: '/monthlyaccount' },
+  { label: 'Family Directory', to: '/familydirectory' },
   { label: 'Contact', to: '/contact' },
   
 ]
@@ -147,7 +148,7 @@ function AppLayout() {
                       item.label === 'Home'
                         ? 700
                         : 600,
-                    fontSize: '0.96rem',
+                    fontSize: '0.80rem',
                     '&:hover': {
                       color: '#f7444e',
                     },
@@ -281,6 +282,22 @@ function AppLayout() {
                 }}
               >
                 Monthly Account
+              </Link>
+
+              <Link
+                component={RouterLink}
+                to="/familydirectory"
+                underline="none"
+                sx={{
+                  color: '#d4dde1',
+                  fontWeight: 500,
+                  width: 'fit-content',
+                  '&:hover': {
+                    color: '#f7444e',
+                  },
+                }}
+              >
+                Family Directory
               </Link>
 
               <Link

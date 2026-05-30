@@ -1,0 +1,45 @@
+[
+    {
+      "id": 1,
+      "familyHead": "Ashok Mer",
+      "city": "Bhuj",
+      "contact": "9427250955",
+      "members": [
+        {
+          "name": "Ashok Mer",
+          "age": 64,
+          "relationship": "Family Head",
+          "occupation": "Social Activist",
+          "contact": "9427250955"
+        },
+        {
+          "name": "Rekha Mer",
+          "age": 60,
+          "relationship": "Wife",
+          "occupation": "Homemaker",
+          "contact": "9427250955"
+        },
+        {
+          "name": "Raahi Mer",
+          "age": 36,
+          "relationship": "Son",
+          "occupation": "Private Job",
+          "contact": "9427250955"
+        },
+        {
+          "name": "Parita Mer",
+          "age": 37,
+          "relationship": "Daughter-in-law",
+          "occupation": "Homemaker",
+          "contact": "9427250955"
+        },
+        {
+          "name": "Vaani Mer",
+          "age": 2,
+          "relationship": "Grand-daughter",
+          "occupation": "-",
+          "contact": "-"
+        }
+      ]
+    }
+  ]
