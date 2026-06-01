@@ -102,6 +102,7 @@ export default function PdfListPage() {
             <Container maxWidth="xl">
                 {/* Header Section */}
                 <Box
+                    color='#002c3e'
                     sx={{
                         display: 'flex',
                         justifyContent: 'space-between',

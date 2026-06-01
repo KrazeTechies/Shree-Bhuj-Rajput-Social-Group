@@ -69,6 +69,7 @@ export default function FamilyList() {
         >
           <Typography
             variant="h4"
+            color='#002c3e'
             fontWeight={700}
           >
             Family Directory
@@ -104,9 +105,9 @@ export default function FamilyList() {
 
           <Typography
             variant="body2"
+            color='#002c3e'
             sx={{
               fontWeight: 600,
-              color: 'text.secondary',
               textAlign: 'right',
             }}
           >
@@ -128,10 +129,6 @@ export default function FamilyList() {
 
               <TableCell>
                 <strong>City</strong>
-              </TableCell>
-
-              <TableCell align="center">
-                <strong>Total Persons</strong>
               </TableCell>
 
               <TableCell>
@@ -159,14 +156,6 @@ export default function FamilyList() {
                     {family.city}
                   </TableCell>
 
-                  <TableCell align="center">
-                    <Chip
-                      size="small"
-                      color="success"
-                      label={family.totalMembers}
-                    />
-                  </TableCell>
-
                   <TableCell>
                     {family.contact}
                   </TableCell>
@@ -186,6 +175,7 @@ export default function FamilyList() {
             ) : (
               <TableRow>
                 <TableCell
+                  color='#002c3e'
                   colSpan={5}
                   align="center"
                   sx={{ py: 4 }}

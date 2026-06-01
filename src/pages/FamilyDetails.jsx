@@ -57,6 +57,15 @@ export default function FamilyDetails() {
             Family Head: {family.familyHead}
           </Typography>
         )}
+
+        {family && (
+          <Typography
+            variant="body1"
+            color="text.secondary"
+          >
+            Address:  {family.address}
+          </Typography>
+        )}
       </Box>
 
       <TableContainer
@@ -79,7 +88,15 @@ export default function FamilyDetails() {
               </TableCell>
 
               <TableCell>
+                <strong>Education</strong>
+              </TableCell>
+
+              <TableCell>
                 <strong>Occupation</strong>
+              </TableCell>
+
+              <TableCell>
+                <strong>Marital Status</strong>
               </TableCell>
 
               <TableCell>
@@ -108,7 +125,15 @@ export default function FamilyDetails() {
                   </TableCell>
 
                   <TableCell>
+                    {member.education}
+                  </TableCell>
+
+                  <TableCell>
                     {member.occupation}
+                  </TableCell>
+
+                  <TableCell>
+                    {member.maritalStatus}
                   </TableCell>
 
                   <TableCell>

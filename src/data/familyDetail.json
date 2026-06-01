@@ -1,43 +1,54 @@
 [
     {
       "id": 1,
-      "familyHead": "Ashok Mer",
+      "familyHead": "Ashok Laxmanbhai Mer",
       "city": "Bhuj",
       "contact": "9427250955",
+      "address": "6/A, Panchshil Society, Sanskar Nagar, Bhyj-Kutch, 270001",
       "members": [
         {
-          "name": "Ashok Mer",
-          "age": 64,
-          "relationship": "Family Head",
-          "occupation": "Social Activist",
+          "name": "Ashok L. Mer",
+          "age": 62,
+          "relationship": "Self",
+          "education": "SSC - ITI",
+          "occupation": "Ret. Gov. Employee ",
+          "maritalStatus": "Married",
           "contact": "9427250955"
         },
         {
-          "name": "Rekha Mer",
-          "age": 60,
+          "name": "Rekha A. Mer",
+          "age": 59,
           "relationship": "Wife",
+          "education": "B.A",
           "occupation": "Homemaker",
+          "maritalStatus": "Married",
           "contact": "9427250955"
         },
         {
-          "name": "Raahi Mer",
+          "name": "Raahi A. Mer",
           "age": 36,
           "relationship": "Son",
+          "education": "B.E. - Computer Engineer",
           "occupation": "Private Job",
+          "maritalStatus": "Married",
           "contact": "9427250955"
         },
         {
-          "name": "Parita Mer",
-          "age": 37,
+          "name": "Parita R. Mer",
+          "age": 36,
+          "education": "M.Sc.",
           "relationship": "Daughter-in-law",
-          "occupation": "Homemaker",
+          "occupation": "Dietitian",
+          "maritalStatus": "Married",
           "contact": "9427250955"
         },
         {
-          "name": "Vaani Mer",
+          "name": "Vaani R. Mer",
           "age": 2,
+          "education": "Play House",
           "relationship": "Grand-daughter",
           "occupation": "-",
+          "maritalStatus": "Unmarried",
           "contact": "-"
         }
       ]

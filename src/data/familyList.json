@@ -3,21 +3,18 @@
         "id": 1,
         "familyHead": "Ashok Mer",
         "city": "Bhuj",
-        "totalMembers": 5,
         "contact": "9427250955"
     },
     {
         "id": 2,
         "familyHead": "Ghanshyamsinh Rathod",
-        "city": "Madhapar",
-        "totalMembers": 4,
+        "city": "Bhuj",
         "contact": "9876543211"
     },
     {
         "id": 3,
         "familyHead": "Devendra Mer",
         "city": "Gandhidham",
-        "totalMembers": 8,
         "contact": "9427250955"
     }
 ]

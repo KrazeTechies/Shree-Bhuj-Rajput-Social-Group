@@ -18,58 +18,42 @@ import CloseRounded from '@mui/icons-material/CloseRounded'
 import PersonRounded from '@mui/icons-material/PersonRounded'
 import SearchRounded from '@mui/icons-material/SearchRounded'
 
-// Replace these image paths with your own images
+import donorsData from '../data/donors.json'
+
 import Photo1 from '../assets/team/member-1.jpeg'
 import Photo2 from '../assets/team/member-2.jpeg'
 import Photo3 from '../assets/Donor/donor-3.jpeg'
 import Photo4 from '../assets/team/member-3.jpeg'
 
-const galleryPhotos = [
-  {
-    id: 1,
-    name: 'Ashokbhai Laxmanbhai Mer',
-    image: Photo1,
-  },
-  {
-    id: 2,
-    name: 'Abda Chandresh Pravinbhai',
-    image: '',
-  },
-  {
-    id: 3,
-    name: 'Jayesh N. Sisodiya',
-    image: Photo4,
-  },
-  {
-    id: 4,
-    name: 'Naranji dhanubha rathod',
-    image: Photo3,
-  },
-  {
-    id: 5,
-    name: 'Barach Bharatsinh K.',
-    image: '',
-  },
-  {
-    id: 6,
-    name: 'Batti Balvir Devjibhai',
-    image: '',
-  },
-  {
-    id: 7,
-    name: 'Ghanshyamsinh Rathod',
-    image: Photo2,
-  },
-  {
-    id: 8,
-    name: 'Chauhan Dineshbhai K.',
-    image: '',
-  },
-]
+const imageMap = {
+  'member-1': Photo1,
+  'member-2': Photo2,
+  'member-3': Photo4,
+  'donor-3': Photo3,
+}
 
 function DonorPage() {
   const [selectedPhoto, setSelectedPhoto] = useState(null)
   const [searchText, setSearchText] = useState('')
+
+  const donors = useMemo(() => {
+    return donorsData
+      .map((donor) => ({
+        ...donor,
+        image: donor.image ? imageMap[donor.image] : '',
+      }))
+      .sort((a, b) =>
+        a.name.localeCompare(b.name, undefined, {
+          sensitivity: 'base',
+        })
+      )
+  }, [])
+
+  const filteredPhotos = useMemo(() => {
+    return donors.filter((photo) =>
+      photo.name.toLowerCase().includes(searchText.toLowerCase())
+    )
+  }, [donors, searchText])
 
   const handleOpen = (photo) => {
     if (photo.image) {
@@ -81,12 +65,6 @@ function DonorPage() {
     setSelectedPhoto(null)
   }
 
-  const filteredPhotos = useMemo(() => {
-    return galleryPhotos.filter((photo) =>
-      photo.name.toLowerCase().includes(searchText.toLowerCase())
-    )
-  }, [searchText])
-
   return (
     <Box
       sx={{
@@ -96,7 +74,6 @@ function DonorPage() {
       }}
     >
       <Container maxWidth='xl'>
-        {/* Header + Search */}
         <Box
           sx={{
             display: 'flex',
@@ -112,7 +89,6 @@ function DonorPage() {
             gap: 3,
           }}
         >
-          {/* Left Side */}
           <Stack
             spacing={1.5}
             alignItems={{
@@ -126,6 +102,7 @@ function DonorPage() {
           >
             <Typography
               variant='h3'
+              color='#002c3e'
               fontWeight={800}
               sx={{
                 fontSize: {
@@ -140,7 +117,7 @@ function DonorPage() {
 
             <Typography
               variant='body1'
-              color='text.secondary'
+              color='#002c3e'
               maxWidth='700px'
               sx={{
                 fontSize: {
@@ -153,7 +130,6 @@ function DonorPage() {
             </Typography>
           </Stack>
 
-          {/* Right Side Search */}
           <Stack
             spacing={1}
             alignItems={{
@@ -190,11 +166,10 @@ function DonorPage() {
               }}
             />
 
-            {/* Show only when user searches */}
             {searchText.trim() !== '' && (
               <Typography
                 variant='body2'
-                color='text.secondary'
+                color='#002c3e'
                 sx={{
                   fontWeight: 600,
                   fontSize: '0.85rem',
@@ -293,6 +268,7 @@ function DonorPage() {
 
                   <Typography
                     variant='body2'
+                    color='#002c3e'
                     fontWeight={700}
                     sx={{
                       mt: 1.5,
@@ -320,7 +296,7 @@ function DonorPage() {
           {filteredPhotos.length === 0 && searchText.trim() !== '' && (
             <Typography
               textAlign='center'
-              color='text.secondary'
+              color='#002c3e'
               mt={6}
             >
               No donors found.

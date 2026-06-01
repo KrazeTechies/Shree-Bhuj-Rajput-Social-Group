@@ -12,6 +12,9 @@ import {
   Outlet,
 } from 'react-router-dom'
 
+import InstagramIcon from '@mui/icons-material/Instagram'
+import WhatsAppIcon from '@mui/icons-material/WhatsApp'
+
 import { useEffect, useState } from 'react'
 
 import Logo from '../assets/Logo.jpeg'
@@ -23,7 +26,7 @@ const navItems = [
   { label: 'Monthly Account', to: '/monthlyaccount' },
   { label: 'Family Directory', to: '/familydirectory' },
   { label: 'Contact', to: '/contact' },
-  
+
 ]
 
 function AppLayout() {
@@ -187,140 +190,56 @@ function AppLayout() {
           },
         }}
       >
-        <Grid container spacing={3}>
-          {/* ADDRESS */}
-          <Grid size={{ xs: 12, md: 4 }}>
+        <Grid container spacing={4}>
+          {/* MENU */}
+          <Grid size={{ xs: 12, md: 6 }}>
             <Typography
               variant="h6"
               sx={{
                 fontWeight: 800,
-                mb: 1.2,
-                color: '#fff',
-              }}
-            >
-              ADDRESS
-            </Typography>
-
-            <Typography>
-              Bhuj, Kutch, Gujarat
-            </Typography>
-          </Grid>
-
-          {/* FOOTER MENU */}
-          <Grid size={{ xs: 12, md: 4 }}>
-            <Typography
-              variant="h6"
-              sx={{
-                fontWeight: 800,
-                mb: 1.2,
+                mb: 2,
                 color: '#fff',
               }}
             >
               MENU
             </Typography>
 
-            <Stack spacing={1}>
-              <Link
-                component={RouterLink}
-                to="/#home"
-                underline="none"
-                sx={{
-                  color: '#d4dde1',
-                  fontWeight: 500,
-                  width: 'fit-content',
-                  '&:hover': {
-                    color: '#f7444e',
-                  },
-                }}
-              >
-                Home
-              </Link>
-
-              <Link
-                component={RouterLink}
-                to="/gallery"
-                underline="none"
-                sx={{
-                  color: '#d4dde1',
-                  fontWeight: 500,
-                  width: 'fit-content',
-                  '&:hover': {
-                    color: '#f7444e',
-                  },
-                }}
-              >
-                Gallery
-              </Link>
-
-              <Link
-                component={RouterLink}
-                to="/donors"
-                underline="none"
-                sx={{
-                  color: '#d4dde1',
-                  fontWeight: 500,
-                  width: 'fit-content',
-                  '&:hover': {
-                    color: '#f7444e',
-                  },
-                }}
-              >
-                Donors
-              </Link>
-
-              <Link
-                component={RouterLink}
-                to="/monthlyaccount"
-                underline="none"
-                sx={{
-                  color: '#d4dde1',
-                  fontWeight: 500,
-                  width: 'fit-content',
-                  '&:hover': {
-                    color: '#f7444e',
-                  },
-                }}
-              >
-                Monthly Account
-              </Link>
-
-              <Link
-                component={RouterLink}
-                to="/familydirectory"
-                underline="none"
-                sx={{
-                  color: '#d4dde1',
-                  fontWeight: 500,
-                  width: 'fit-content',
-                  '&:hover': {
-                    color: '#f7444e',
-                  },
-                }}
-              >
-                Family Directory
-              </Link>
-
-              <Link
-                component={RouterLink}
-                to="/contact"
-                underline="none"
-                sx={{
-                  color: '#d4dde1',
-                  fontWeight: 500,
-                  width: 'fit-content',
-                  '&:hover': {
-                    color: '#f7444e',
-                  },
-                }}
-              >
-                Contact
-              </Link>
-
-            </Stack>
+            <Grid container spacing={1.5}>
+              {navItems.map((item) => (
+                <Grid
+                  key={item.label}
+                  size={{ xs: 6 }}
+                >
+                  <Link
+                    component={RouterLink}
+                    to={item.to}
+                    underline="none"
+                    sx={{
+                      color: '#d4dde1',
+                      fontWeight: 500,
+                      display: 'block',
+                      '&:hover': {
+                        color: '#f7444e',
+                      },
+                    }}
+                  >
+                    {item.label}
+                  </Link>
+                </Grid>
+              ))}
+            </Grid>
           </Grid>
 
-          {/* VISITOR COUNTER */}
-          <Grid size={{ xs: 12, md: 4 }}>
+          {/* VISITOR COUNTER + SOCIAL */}
+          <Grid
+            size={{ xs: 12, md: 6 }}
+            sx={{
+              textAlign: {
+                xs: 'center',
+                md: 'right',
+              },
+            }}
+          >
             <Typography
               variant="h6"
               sx={{
@@ -343,16 +262,87 @@ function AppLayout() {
               {visitorCount ?? '...'}
             </Typography>
 
-            <Typography sx={{ mb: 1.1 }}>
+            <Typography sx={{ mb: 3 }}>
               Thank you for visiting our website.
             </Typography>
+
+            <Typography
+              variant="h6"
+              sx={{
+                fontWeight: 800,
+                mb: 1.5,
+                color: '#fff',
+              }}
+            >
+              FOLLOW US
+            </Typography>
+
+            <Box
+              sx={{
+                display: 'flex',
+                justifyContent: {
+                  xs: 'center',
+                  md: 'flex-end',
+                },
+              }}
+            >
+              <Stack
+                direction="row"
+                spacing={2}
+                alignItems="center"
+              >
+                <Link
+                  href="https://www.instagram.com/shree.bhuj.rajput.social.group?igsh=MXA5Y2Z0bzM4bmg4eA=="
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  underline="none"
+                  sx={{
+                    color: '#d4dde1',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    '&:hover': {
+                      color: '#f7444e',
+                    },
+                  }}
+                >
+                  <InstagramIcon
+                    sx={{
+                      fontSize: 34,
+                    }}
+                  />
+                </Link>
+
+                <Link
+                  href="https://wa.me/919999999999"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  underline="none"
+                  sx={{
+                    color: '#d4dde1',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    '&:hover': {
+                      color: '#25D366',
+                    },
+                  }}
+                >
+                  <WhatsAppIcon
+                    sx={{
+                      fontSize: 34,
+                    }}
+                  />
+                </Link>
+              </Stack>
+            </Box>
           </Grid>
         </Grid>
 
         {/* COPYRIGHT */}
         <Typography
           sx={{
-            mt: 3.5,
+            mt: 4,
             pt: 2,
             borderTop: '1px solid #343b40',
             textAlign: 'center',
